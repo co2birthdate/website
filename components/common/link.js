@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import MuiLink from '@material-ui/core/Link'
+import MuiLink from '@mui/material/Link'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { forwardRef } from 'react'

@@ -19,7 +19,6 @@ mkdir -p out
 npm run export
 
 # generate sitemap
-npm install --save sitemap
 echo "https://co2birth.date" > listofurls.txt && \
 	find out/co2 -name "*.html" -maxdepth 1 -type f | \
 	sed 's/out/https:\/\/co2birth.date/g' >> listofurls.txt && \

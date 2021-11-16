@@ -1,7 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheets } from '@material-ui/core/styles'
+import createEmotionServer from '@emotion/server/create-instance'
+
 import theme from '../layouts/theme'
+import createEmotionCache from '../lib/createEmotionCache'
 
 export default class AppDocument extends Document {
   render() {
@@ -30,18 +32,31 @@ export default class AppDocument extends Document {
   }
 }
 AppDocument.getInitialProps = async (ctx) => {
-  const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage
+  const emotionCache = createEmotionCache()
+  const { extractCriticalToChunks } = createEmotionServer(emotionCache)
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) => (<App emotionCache={emotionCache} {...props} />),
     })
 
   const initialProps = await Document.getInitialProps(ctx)
 
+  // This is important. It prevents emotion to render invalid HTML.
+  // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
+  const emotionStyles = extractCriticalToChunks(initialProps.html)
+  const emotionStyleTags = emotionStyles.styles.map((style) => (
+    <style
+      data-emotion={`${style.key} ${style.ids.join(' ')}`}
+      key={style.key}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: style.css }}
+    />
+  ))
+
   return {
     ...initialProps,
-    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+    styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
   }
 }

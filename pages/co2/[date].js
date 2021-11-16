@@ -1,15 +1,15 @@
-import Box from '@material-ui/core/Box'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
-import Typography from '@material-ui/core/Typography'
-import Snackbar from '@material-ui/core/Snackbar'
-import Alert from '@material-ui/lab/Alert'
-import MuiLink from '@material-ui/core/Link'
-import TwitterIcon from '@material-ui/icons/Twitter'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
-import LinkIcon from '@material-ui/icons/Link'
+import Box from '@mui/material/Box'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Typography from '@mui/material/Typography'
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
+import MuiLink from '@mui/material/Link'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import FacebookIcon from '@mui/icons-material/Facebook'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import LinkIcon from '@mui/icons-material/Link'
 import { useState } from 'react'
 import { parse, format } from 'date-fns'
 
@@ -108,10 +108,7 @@ const CO2Page = ({ date, ppm, difference, latest }) => {
                 </Typography>
                 <span>%</span>
               </Box>
-              <ListItemText
-              secondary={'that\'s your change'}
-               >
-              </ListItemText>
+              <ListItemText secondary={'that\'s your change'} />
             </ListItem>
           </List>
         </section>

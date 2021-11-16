@@ -1,7 +1,7 @@
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import KeyboardBackspaceOutlinedIcon from '@material-ui/icons/KeyboardBackspaceOutlined'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined'
 import Layout from '../layouts/layout'
 
 const NotFound = () => (

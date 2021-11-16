@@ -7,6 +7,9 @@ import { AppContextProvider } from '../providers/appContextService'
 import theme from '../layouts/theme'
 import CssStyles from '../assets/jss/styles'
 
+import createEmotionCache from '../lib/createEmotionCache'
+
+const clientSideEmotionCache = createEmotionCache();
 const NoLayout = ({ children }) => children
 
 // framer-motion
@@ -21,7 +24,7 @@ Router.events.on('routeChangeStart', (url) => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-export default function App({ Component, pageProps, err }) {
+export default function App({ Component, emotionCache = clientSideEmotionCache, pageProps, err }) {
   const Layout = Component.Layout || NoLayout
   const router = useRouter()
 
@@ -35,7 +38,7 @@ export default function App({ Component, pageProps, err }) {
 
   // Workaround for https://github.com/vercel/next.js/issues/8592
   return (
-    <AppContextProvider theme={theme}>
+    <AppContextProvider theme={theme} emotionCache={emotionCache}>
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />

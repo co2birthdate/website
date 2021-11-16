@@ -1,5 +1,6 @@
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { makeStyles, darken, lighten } from '@material-ui/core/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { darken, lighten } from '@mui/material/styles'
+import { makeStyles } from '@mui/styles'
 
 const CssStyles = () => {
   (makeStyles(({ palette, ...theme }) => ({

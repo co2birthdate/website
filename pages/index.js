@@ -1,9 +1,9 @@
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
-import { DatePicker } from '@material-ui/pickers'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import DatePicker from '@mui/lab/DatePicker'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
@@ -54,8 +54,7 @@ const HomePage = () => {
       </Typography>
 
       <Box my={5}>
-      <Typography variant="body1">How much has CO<sub>2</sub> increased in your lifetime?</Typography>
-
+        <Typography variant="body1">How much has CO<sub>2</sub> increased in your lifetime?</Typography>
         <Typography variant="body2">Enter a valid date (since 1900)</Typography>
 
         <Box mt={3}>
@@ -65,7 +64,7 @@ const HomePage = () => {
             disableFuture
             allowSameDateSelection
             openTo="year"
-            views={[ "year", "month", "date" ]}
+            views={[ "year", "month", "day" ]}
             mask={DATE_MASK}
             inputFormat={DATE_FORMAT}
             maxDate={new Date()}

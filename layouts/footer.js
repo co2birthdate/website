@@ -1,7 +1,7 @@
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import MuiLink from '@material-ui/core/Link'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import MuiLink from '@mui/material/Link'
 
 export const Copyright = ({ className }) => (
   <Box mt={3} py={3} align="center" className={className}>
@@ -112,7 +112,7 @@ export const FooterSection = () => (
           >
             Mykola Tunyk
           </MuiLink>
-        </li>       
+        </li>
         <li>
           Illustration:
           &nbsp;
@@ -135,8 +135,6 @@ export const FooterSection = () => (
             Alfonso López-Sanz
           </MuiLink>
         </li>
-
-
       </ul>
     </Grid>
   </Grid>
